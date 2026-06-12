@@ -30,6 +30,7 @@ quote: "When immersed in the note and the raga, the self disappears and the musi
 quoteBy: "Pandit Uday Bhawalkar"
 
 artistImage: "events/dhrupad-uday-bhawalkar/portrait.jpg"
+artistLink: "https://www.dhrupaduday.com"
 artistBio: |
   Born in Ujjain in 1966, **Pandit Uday Bhawalkar** is among the foremost Dhrupad
   vocalists in the world, and a central force in the tradition's resurgence over the

@@ -99,6 +99,9 @@
           {{ range . }}<span class="chip" style="background:transparent; border:1px solid var(--outline-strong);">{{ . }}</span>{{ end }}
         </div>
         {{ end }}
+        {{ with .Params.artistLink }}
+        <p style="margin-top: var(--space-4);"><a class="label label--maroon" href="{{ . }}" target="_blank" rel="noopener" style="border-bottom:1px solid var(--maroon); padding-bottom:2px;">More about Uday Bhawalkar →</a></p>
+        {{ end }}
       </div>
     </div>
   </div>
