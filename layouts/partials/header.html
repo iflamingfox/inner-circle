@@ -1,5 +1,10 @@
 <header class="site-header">
-  <a href="{{ "/" | relURL }}" class="brand">{{ .Site.Title }}</a>
+  <a href="{{ "/" | relURL }}" class="brand-lockup" aria-label="{{ .Site.Title }} — home">
+    {{ with resources.Get "images/logo.png" }}
+      <img class="brand-lockup__logo" src="{{ .RelPermalink }}" alt="{{ $.Site.Title }}" width="600" height="101">
+    {{ end }}
+    <span class="brand-lockup__tagline">Contemporary space for ancient traditions</span>
+  </a>
   <button class="nav__toggle" aria-expanded="false" aria-controls="primary-nav" data-nav-toggle>Menu</button>
   <nav id="primary-nav" class="nav" aria-label="Primary">
     {{ range .Site.Menus.main }}
