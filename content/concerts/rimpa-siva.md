@@ -26,7 +26,7 @@ lede: "She was a child when the world first called her the *Princess of Tabla*. 
 
 quote: "The tabla in her hands is not accompaniment — it is the full voice of the evening."
 
-artistImage: "events/rimpa-siva/header.jpg"
+artistImage: "events/rimpa-siva/portrait.jpg"
 artistBio: |
   Born in 1986, **Rimpa Siva** is among India's most celebrated tabla artists — and
   one of remarkably few women to have made the solo tabla her own. She was the
@@ -48,8 +48,6 @@ accolades:
   - "Shanmukha Sangeet Shiromani Award"
 
 lineageIntro: "Rimpa Siva plays in the **Farukhabad gharana** — one of the six great schools of tabla, prized for its melodic, composition-rich repertoire. She learned it from within her own family, and grew up to transform a tradition that had rarely made room for women."
-lineageImage: "events/rimpa-siva/young-rimpa.jpg"
-lineageCaption: "Rimpa Siva — a prodigy from childhood"
 gurus:
   - name: "Prof. Swapan Siva"
     role: "Tabla · Her father & guru"
@@ -57,6 +55,7 @@ gurus:
 
 essayKicker: "The Instrument"
 essayTitle: "On the Tabla"
+essayImage: "events/rimpa-siva/tabla.jpg"
 essayBody: |
   The tabla is a pair of hand drums — the wooden *dayan* under the right hand and the
   metal *bayan* under the left — capable of an extraordinary vocabulary of timbre and

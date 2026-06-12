@@ -408,6 +408,16 @@ a:hover .img-editorial, .group:hover .img-editorial { filter: grayscale(0) brigh
 
 @media (max-width: 700px) { .prose[style*="columns"] { columns: 1 !important; } }
 
+/* --- Essay split (image + maroon text panel) --- */
+.essay-split { display: grid; grid-template-columns: 1fr; gap: var(--space-5); align-items: center; }
+@media (min-width: 900px) { .essay-split { grid-template-columns: 1fr 1fr; gap: var(--space-6); } }
+.essay-split__figure { position: relative; margin: 0; }
+.essay-split__figure img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; position: relative; z-index: 1; }
+.essay-split__figure::after { content: ""; position: absolute; inset: 0; border: 1px solid var(--maroon); transform: translate(16px, 16px); z-index: 0; }
+.essay-split__panel { background: var(--maroon-deep); color: #fff; padding: clamp(2rem, 4vw, 3.25rem); }
+.essay-split__panel .prose { color: rgba(255,255,255,0.88); max-width: none; }
+.essay-split__panel .prose p { font-size: var(--fs-body); }
+
 /* --- Video media facade (click thumbnail to load YouTube embed) --- */
 .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: var(--space-4); }
 .video-card { margin: 0; }

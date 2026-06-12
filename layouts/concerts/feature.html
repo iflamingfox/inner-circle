@@ -92,7 +92,7 @@
       </div>
       <div>
         <p class="label label--maroon">The Artist</p>
-        <h2 class="t-headline-lg" style="margin-top: var(--space-2);">Pandit Uday<br>Bhawalkar</h2>
+        <h2 class="t-headline-lg" style="margin-top: var(--space-2);">{{ .Params.artistFullName | default .Params.artist }}</h2>
         <div class="prose" style="margin-top: var(--space-3);">{{ .Params.artistBio | markdownify }}</div>
         {{ with .Params.accolades }}
         <div style="display:flex; flex-wrap:wrap; gap: var(--space-1); margin-top: var(--space-4);">
@@ -109,9 +109,9 @@
 
 {{/* ============================ MEDIA / WATCH ============================ */}}
 {{ with .Params.videos }}
-<section class="section section--charcoal">
+<section class="section section--maroon">
   <div class="container">
-    <div class="section-head" style="border-color: rgba(255,255,255,0.16);">
+    <div class="section-head" style="border-color: rgba(255,255,255,0.18);">
       <h2 class="t-headline-lg" style="color:#fff;">In Performance</h2>
       <span class="label" style="color: var(--turmeric);">Watch</span>
     </div>
@@ -194,12 +194,33 @@
 
 {{/* ============================ ESSAY (generic) ============================ */}}
 {{ with .Params.essayBody }}
+{{ if $.Params.essayImage }}
+{{/* Split layout: tabla image beside a maroon text panel */}}
+<section class="section">
+  <div class="container">
+    <div class="essay-split">
+      <figure class="essay-split__figure">
+        {{ with resources.Get (printf "images/%s" $.Params.essayImage) }}
+          {{ $t := .Fill "880x660 Smart" }}
+          <img src="{{ $t.RelPermalink }}" alt="{{ $.Params.essayTitle }}" loading="lazy">
+        {{ end }}
+      </figure>
+      <div class="essay-split__panel">
+        {{ with $.Params.essayKicker }}<p class="label" style="color: var(--turmeric);">{{ . }}</p>{{ end }}
+        <h2 class="t-headline-md" style="color:#fff; margin: var(--space-2) 0 var(--space-3);">{{ $.Params.essayTitle | default "In Depth" }}</h2>
+        <div class="prose">{{ . | markdownify }}</div>
+      </div>
+    </div>
+  </div>
+</section>
+{{ else }}
 <section class="section section--warm">
   <div class="container">
     <div class="section-head"><h2 class="t-headline-lg">{{ $.Params.essayTitle | default "In Depth" }}</h2>{{ with $.Params.essayKicker }}<span class="label">{{ . }}</span>{{ end }}</div>
     <div class="prose" style="columns: 2; column-gap: var(--space-6); max-width: none;">{{ . | markdownify }}</div>
   </div>
 </section>
+{{ end }}
 {{ end }}
 
 {{/* ============================ ON DHRUPAD ============================ */}}
