@@ -2,22 +2,22 @@
   <div class="container">
     <div class="grid" style="grid-template-columns: 1.5fr 1fr 1fr; align-items: start; gap: var(--space-5);">
       <div>
-        <p class="brand" style="color:#fff; margin-bottom: var(--space-2);">{{ .Site.Title }}</p>
-        <p style="max-width: 36ch; opacity: 0.85;">{{ .Site.Params.tagline }}</p>
+        <p class="brand" style="margin-bottom: var(--space-2);">{{ .Site.Title }}</p>
+        <p style="max-width: 36ch; color: var(--charcoal-soft);">{{ .Site.Params.tagline }}</p>
       </div>
       <div class="stack">
-        <p class="label" style="color: var(--turmeric);">Visit</p>
-        <p style="opacity:0.85;">{{ .Site.Params.venueAddress }}</p>
+        <p class="label label--maroon">Visit</p>
+        <p style="color: var(--charcoal-soft);">{{ .Site.Params.venueAddress }}</p>
       </div>
       <div class="stack">
-        <p class="label" style="color: var(--turmeric);">Connect</p>
+        <p class="label label--maroon">Connect</p>
         <a href="{{ .Site.Params.boxOffice }}" target="_blank" rel="noopener">Tickets</a><br>
         <a href="mailto:{{ .Site.Params.email }}">Email</a>
         {{ with .Site.Params.social.instagram }}<br><a href="{{ . }}" target="_blank" rel="noopener">Instagram</a>{{ end }}
         {{ with .Site.Params.social.youtube }}<br><a href="{{ . }}" target="_blank" rel="noopener">YouTube</a>{{ end }}
       </div>
     </div>
-    <hr style="border:none; border-top:1px solid rgba(255,255,255,0.2); margin-block: var(--space-4);">
-    <p class="label" style="opacity:0.7;">© {{ now.Year }} {{ .Site.Title }} · Chevy Chase, Maryland</p>
+    <hr style="border:none; border-top: var(--rule); margin-block: var(--space-4);">
+    <p class="label">© {{ now.Year }} {{ .Site.Title }} · Chevy Chase, Maryland</p>
   </div>
 </footer>

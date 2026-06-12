@@ -139,7 +139,7 @@ p { margin: 0 0 var(--space-3); max-width: var(--measure); }
 .section--tight { padding-block: var(--space-5); }
 .section--bone-dim { background: var(--bone-dim); }
 .section--charcoal { background: var(--charcoal); color: var(--on-charcoal); }
-.section--maroon { background: var(--maroon); color: var(--on-maroon); }
+.section--maroon { background: var(--maroon-deep); color: var(--on-maroon); }
 .section--charcoal h1, .section--charcoal h2, .section--charcoal h3,
 .section--maroon h1, .section--maroon h2, .section--maroon h3 { color: inherit; }
 
@@ -234,6 +234,8 @@ a.card:hover .card__media img, .card a:hover .card__media img { transform: scale
 .nav { display: flex; gap: var(--space-4); align-items: center; }
 .nav a { font-family: var(--font-body); font-size: var(--fs-label); font-weight: 600; letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--charcoal-soft); }
 .nav a:hover { color: var(--maroon); }
+/* Button in the nav must keep its own light text (beats .nav a specificity) */
+.nav a.btn--primary, .nav a.btn--primary:hover { color: var(--on-maroon); }
 .nav__toggle {
   display: none; background: none; border: none; cursor: pointer; padding: 0.5rem;
   font-family: var(--font-body); font-size: var(--fs-label); font-weight: 600;
@@ -252,9 +254,9 @@ a.card:hover .card__media img, .card a:hover .card__media img { transform: scale
   .nav .btn { justify-content: center; }
 }
 
-.site-footer { background: var(--maroon); color: var(--on-maroon); padding-block: var(--space-6); }
-.site-footer a { color: var(--on-maroon); opacity: 0.85; }
-.site-footer a:hover { opacity: 1; color: var(--turmeric); }
+.site-footer { background: var(--bone-dim); color: var(--charcoal); padding-block: var(--space-6); border-top: var(--rule); }
+.site-footer a { color: var(--maroon); }
+.site-footer a:hover { color: var(--maroon-deep); }
 
 /* --- Hero --- */
 .hero { position: relative; }
