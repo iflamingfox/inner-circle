@@ -107,6 +107,29 @@
   </div>
 </section>
 
+{{/* ============================ MEDIA / WATCH ============================ */}}
+{{ with .Params.videos }}
+<section class="section section--charcoal">
+  <div class="container">
+    <div class="section-head" style="border-color: rgba(255,255,255,0.16);">
+      <h2 class="t-headline-lg" style="color:#fff;">In Performance</h2>
+      <span class="label" style="color: var(--turmeric);">Watch</span>
+    </div>
+    <div class="video-grid">
+      {{ range . }}
+      <figure class="video-card" data-yt="{{ .id }}">
+        <button class="video-card__btn" type="button" aria-label="Play video: {{ .title }}">
+          <img src="https://i.ytimg.com/vi/{{ .id }}/hqdefault.jpg" alt="{{ .title }}" loading="lazy">
+          <span class="video-card__play" aria-hidden="true"></span>
+        </button>
+        <figcaption class="label" style="color: rgba(243,240,239,0.8); margin-top: var(--space-2);">{{ .title }}{{ with .source }} · {{ . }}{{ end }}</figcaption>
+      </figure>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
 {{/* ============================ THE LINEAGE ============================ */}}
 {{ with .Params.gurus }}
 <section class="section section--warm">
@@ -116,6 +139,15 @@
       <span class="label">The Dagarvani</span>
     </div>
     {{ with $.Params.lineageIntro }}<p class="t-body-lg" style="max-width: 60ch; color: var(--charcoal-soft); margin-bottom: var(--space-6);">{{ . | markdownify }}</p>{{ end }}
+    {{ with $.Params.lineageImage }}
+      {{ with resources.Get (printf "images/%s" .) }}
+        {{ $li := .Fill "760x950 Smart" }}
+        <figure style="margin: 0 0 var(--space-6); max-width: 380px;">
+          <img class="img-editorial" src="{{ $li.RelPermalink }}" alt="{{ $.Params.lineageCaption | default $.Params.artist }}" loading="lazy" style="width:100%; aspect-ratio:4/5; object-fit:cover;">
+          {{ with $.Params.lineageCaption }}<figcaption class="label" style="margin-top: var(--space-2);">{{ . }}</figcaption>{{ end }}
+        </figure>
+      {{ end }}
+    {{ end }}
     <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5);">
       {{ range . }}
       {{ $name := .name }}{{ $role := .role }}{{ $note := .note }}{{ $gimg := .image }}
@@ -160,6 +192,16 @@
 </section>
 {{ end }}
 
+{{/* ============================ ESSAY (generic) ============================ */}}
+{{ with .Params.essayBody }}
+<section class="section section--warm">
+  <div class="container">
+    <div class="section-head"><h2 class="t-headline-lg">{{ $.Params.essayTitle | default "In Depth" }}</h2>{{ with $.Params.essayKicker }}<span class="label">{{ . }}</span>{{ end }}</div>
+    <div class="prose" style="columns: 2; column-gap: var(--space-6); max-width: none;">{{ . | markdownify }}</div>
+  </div>
+</section>
+{{ end }}
+
 {{/* ============================ ON DHRUPAD ============================ */}}
 {{ with .Params.dhrupadBody }}
 <section class="section">
@@ -171,4 +213,24 @@
 {{ end }}
 
 {{ partial "newsletter.html" . }}
+
+{{ if .Params.videos }}
+<script>
+  (function () {
+    document.querySelectorAll('.video-card').forEach(function (card) {
+      var btn = card.querySelector('.video-card__btn');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var id = card.getAttribute('data-yt');
+        var wrap = document.createElement('div');
+        wrap.className = 'video-embed';
+        wrap.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + id +
+          '?autoplay=1&rel=0" title="YouTube video player" frameborder="0" ' +
+          'allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>';
+        btn.replaceWith(wrap);
+      });
+    });
+  })();
+</script>
+{{ end }}
 {{ end }}
