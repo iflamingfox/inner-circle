@@ -234,10 +234,22 @@ a.card:hover .card__media img, .card a:hover .card__media img { transform: scale
 .nav { display: flex; gap: var(--space-4); align-items: center; }
 .nav a { font-family: var(--font-body); font-size: var(--fs-label); font-weight: 600; letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--charcoal-soft); }
 .nav a:hover { color: var(--maroon); }
-.nav__toggle { display: none; }
+.nav__toggle {
+  display: none; background: none; border: none; cursor: pointer; padding: 0.5rem;
+  font-family: var(--font-body); font-size: var(--fs-label); font-weight: 600;
+  letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--charcoal);
+}
 @media (max-width: 720px) {
-  .nav { gap: var(--space-2); }
-  .nav a:not(.btn) { display: none; }
+  .nav__toggle { display: inline-flex; align-items: center; }
+  .nav {
+    position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: var(--space-3);
+    background: var(--bone); border-bottom: var(--rule);
+    padding: var(--space-3) var(--margin-mobile);
+    display: none;
+  }
+  .nav.is-open { display: flex; }
+  .nav .btn { justify-content: center; }
 }
 
 .site-footer { background: var(--maroon); color: var(--on-maroon); padding-block: var(--space-6); }
