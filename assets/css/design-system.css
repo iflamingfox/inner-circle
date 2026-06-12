@@ -335,11 +335,10 @@ a:hover .img-editorial, .group:hover .img-editorial { filter: grayscale(0) brigh
 /* --- Gatherings (alternating rows) --- */
 .section--warm { background: #efe8dc; }   /* warm linen tone, distinct from bone */
 .gatherings-list { display: flex; flex-direction: column; gap: var(--space-7); }
-.gathering-row { transition: transform 400ms cubic-bezier(0.4,0,0.2,1); }
-.gathering-row__media { position: relative; transition: box-shadow 400ms ease; }
+.gathering-row { padding: var(--space-4); transition: transform 400ms cubic-bezier(0.4,0,0.2,1), background-color 400ms ease, box-shadow 400ms ease; }
+.gathering-row__media { position: relative; }
 .gathering-row h3 { transition: color 300ms ease; }
-.gathering-row:hover { transform: translateY(-8px); }
-.gathering-row:hover .gathering-row__media { box-shadow: 0 18px 40px -18px rgba(26,26,26,0.45); }
+.gathering-row:hover { transform: translateY(-8px); background: var(--bone-container); box-shadow: 0 26px 55px -24px rgba(26,26,26,0.45); }
 .gathering-row:hover h3 { color: var(--maroon); }
 .gathering-row__more { position: relative; }
 .gathering-row__more::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 0; height: 1px; background: var(--maroon); transition: width 350ms ease; }

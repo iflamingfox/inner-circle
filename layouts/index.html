@@ -62,7 +62,8 @@
       </div>
       <div class="feature__media">
         <div class="feature__media-frame">
-          {{ with resources.Get (printf "images/%s" .Params.image) }}
+          {{ $li := .Params.listingImage | default .Params.image }}
+          {{ with resources.Get (printf "images/%s" $li) }}
             {{ $f := .Fill "900x1125 Smart" }}
             <img src="{{ $f.RelPermalink }}" alt="{{ $.Params.artist }}" width="900" height="1125" style="width:100%;height:100%;object-fit:cover;">
           {{ end }}
@@ -87,7 +88,8 @@
       {{ range $i, $c := $rest }}
       <a class="gathering-row reveal {{ if eq (mod $i 2) 1 }}gathering-row--reverse{{ end }}" href="{{ $c.RelPermalink }}">
         <div class="gathering-row__media">
-          {{ with resources.Get (printf "images/%s" $c.Params.image) }}
+          {{ $li := $c.Params.listingImage | default $c.Params.image }}
+          {{ with resources.Get (printf "images/%s" $li) }}
             {{ $t := .Fill "800x800 Smart" }}
             <img class="img-editorial" src="{{ $t.RelPermalink }}" alt="{{ $c.Params.artist }}" loading="lazy" width="800" height="800">
           {{ end }}
@@ -123,7 +125,8 @@
       {{ range first 4 $past }}
       <a class="archive-card group" href="{{ .RelPermalink }}">
         <div class="archive-card__frame">
-          {{ with resources.Get (printf "images/%s" .Params.image) }}
+          {{ $li := .Params.listingImage | default .Params.image }}
+          {{ with resources.Get (printf "images/%s" $li) }}
             {{ $a := .Fill "600x800 Smart" }}
             <img class="img-editorial" src="{{ $a.RelPermalink }}" alt="{{ .Params.artist }}" loading="lazy" width="600" height="800">
           {{ end }}

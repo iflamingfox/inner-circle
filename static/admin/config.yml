@@ -34,7 +34,8 @@ collections:
       - { label: "Instrument / tradition", name: instrument, widget: string, hint: "e.g. Tabla, Sarod, Dhrupad Vocal" }
       - { label: "Accompanists", name: accompanists, widget: list, required: false, field: { label: "Name & role", name: name, widget: string }, hint: "e.g. 'Debu Nayak — Tabla'" }
       - { label: "Summary", name: summary, widget: text, hint: "One sentence shown on the home page and cards." }
-      - { label: "Banner image", name: image, widget: image, media_folder: "/assets/images/concerts", public_folder: "concerts", hint: "Wide promotional banner (used as the concert page hero)." }
+      - { label: "Event header image", name: image, widget: image, media_folder: "/assets/images/events", public_folder: "events", hint: "Wide banner across the top of the concert page." }
+      - { label: "Listing image", name: listingImage, widget: image, required: false, media_folder: "/assets/images/events", public_folder: "events", hint: "Square/portrait thumbnail for lists & the home page. Defaults to the header image if blank." }
       - { label: "Ticket URL", name: ticketUrl, widget: string, hint: "Link to the Ticket Tailor event page." }
       - { label: "Doors time", name: doors, widget: string, default: "6:00 PM" }
       - { label: "Begins time", name: starts, widget: string, default: "6:30 PM" }
