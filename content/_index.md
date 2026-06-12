@@ -5,5 +5,5 @@ title: "Inner Circle"
 featuredConcert: ""
 # Home hero background — a venue photo keeps the page light & airy and avoids
 # collision with promo-banner text. Leave blank to use the salon by default.
-heroImage: "house/salon.jpg"
+heroImage: "house/hero.jpg"
 ---

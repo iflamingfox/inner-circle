@@ -36,7 +36,7 @@
     </div>
   </div>
   <a class="descend" href="#featured" aria-label="Scroll down">
-    <span>Descend</span>
+    <span>Scroll</span>
     <span class="descend__line"></span>
   </a>
 </section>
@@ -77,7 +77,7 @@
 {{/* ========================= 3 · UPCOMING GATHERINGS ====================== */}}
 {{ $rest := where $upcoming "Permalink" "!=" $featured.Permalink }}
 {{ if $rest }}
-<section class="section section--bone-dim">
+<section class="section section--warm">
   <div class="container reveal">
     <div class="section-head">
       <h2 class="t-headline-lg">Gatherings</h2>
@@ -157,6 +157,23 @@
       });
     }, { threshold: 0.12 });
     els.forEach(function (e) { io.observe(e); });
+  })();
+
+  // Subtle hero parallax — image drifts slightly slower than the page
+  (function () {
+    var img = document.querySelector('.vhero__img');
+    if (!img || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var ticking = false;
+    function update() {
+      var y = window.scrollY;
+      if (y < window.innerHeight) {
+        img.style.transform = 'scale(1.12) translateY(' + (y * 0.06) + 'px)';
+      }
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { window.requestAnimationFrame(update); ticking = true; }
+    }, { passive: true });
   })();
 </script>
 {{ end }}
