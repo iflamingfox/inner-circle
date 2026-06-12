@@ -6,7 +6,7 @@
 
 backend:
   name: github
-  repo: REPLACE_WITH/your-repo   # e.g. loganissian/inner-circle
+  repo: iflamingfox/inner-circle
   branch: main
   # Sveltia uses its own hosted GitHub OAuth by default (no server needed).
 
