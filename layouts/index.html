@@ -32,7 +32,7 @@
     <h1 class="t-display-xl">The Sanctuary<br>of <span style="font-style:italic;font-weight:300;">Inner Circle</span></h1>
     <p>A private home where the unamplified note is heard the way it was meant to be — a few feet away, among a small circle of listeners.</p>
     <div style="margin-top: var(--space-4);">
-      <a class="btn btn--on-dark" href="{{ "/the-house/" | relURL }}">Step Inside the House</a>
+      <a class="btn btn--on-dark" href="{{ "/concerts/" | relURL }}">See Events</a>
     </div>
   </div>
   <a class="descend" href="#featured" aria-label="Scroll down">
@@ -85,7 +85,7 @@
     </div>
     <div class="gatherings-list">
       {{ range $i, $c := $rest }}
-      <a class="gathering-row {{ if eq (mod $i 2) 1 }}gathering-row--reverse{{ end }}" href="{{ $c.RelPermalink }}">
+      <a class="gathering-row reveal {{ if eq (mod $i 2) 1 }}gathering-row--reverse{{ end }}" href="{{ $c.RelPermalink }}">
         <div class="gathering-row__media">
           {{ with resources.Get (printf "images/%s" $c.Params.image) }}
             {{ $t := .Fill "800x800 Smart" }}

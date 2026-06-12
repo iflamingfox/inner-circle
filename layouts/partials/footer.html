@@ -1,6 +1,6 @@
 <footer class="site-footer">
   <div class="container">
-    <div class="grid" style="grid-template-columns: 1.5fr 1fr 1fr; align-items: start; gap: var(--space-5);">
+    <div class="grid" style="grid-template-columns: 1.5fr 1fr 1fr; align-items: start; gap: var(--space-4);">
       <div>
         <p class="brand" style="margin-bottom: var(--space-2);">{{ .Site.Title }}</p>
         <p style="max-width: 36ch; color: var(--charcoal-soft);">{{ .Site.Params.tagline }}</p>
@@ -17,7 +17,7 @@
         {{ with .Site.Params.social.youtube }}<br><a href="{{ . }}" target="_blank" rel="noopener">YouTube</a>{{ end }}
       </div>
     </div>
-    <hr style="border:none; border-top: var(--rule); margin-block: var(--space-4);">
+    <hr style="border:none; border-top: var(--rule); margin-block: var(--space-3);">
     <p class="label">© {{ now.Year }} {{ .Site.Title }} · Chevy Chase, Maryland</p>
   </div>
 </footer>

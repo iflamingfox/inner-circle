@@ -262,7 +262,7 @@ a.card:hover .card__media img, .card a:hover .card__media img { transform: scale
   .nav .btn { justify-content: center; }
 }
 
-.site-footer { background: var(--bone-dim); color: var(--charcoal); padding-block: var(--space-6); border-top: var(--rule); }
+.site-footer { background: var(--bone-dim); color: var(--charcoal); padding-block: var(--space-4); border-top: var(--rule); }
 .site-footer a { color: var(--maroon); }
 .site-footer a:hover { color: var(--maroon-deep); }
 
@@ -283,8 +283,8 @@ a.card:hover .card__media img, .card a:hover .card__media img { transform: scale
 
 /* --- Full-bleed venue hero --- */
 .vhero { position: relative; min-height: clamp(560px, 90vh, 1000px); display: flex; align-items: flex-end; overflow: hidden; }
-.vhero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.72); transform: scale(1.12); transform-origin: center; will-change: transform; }
-.vhero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,26,26,0.45) 0%, rgba(26,26,26,0.12) 38%, rgba(26,26,26,0.78) 100%); }
+.vhero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.92); transform: scale(1.12); transform-origin: center; will-change: transform; }
+.vhero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(20,16,16,0.32) 0%, rgba(20,16,16,0.04) 36%, rgba(20,16,16,0.55) 100%); }
 .vhero__content { position: relative; z-index: 2; padding-block: var(--space-7); color: #fff; text-shadow: 0 1px 30px rgba(0,0,0,0.4); }
 .vhero h1 { color: #fff; max-width: 14ch; margin-bottom: var(--space-4); }
 .vhero p { color: rgba(255,255,255,0.85); max-width: 40ch; font-size: var(--fs-body-lg); }
@@ -297,6 +297,19 @@ a.card:hover .card__media img, .card a:hover .card__media img { transform: scale
 @keyframes descendBob { 0%,100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(6px); } }
 @media (max-width: 600px) { .descend { display: none; } }
 @media (prefers-reduced-motion: reduce) { .descend { animation: none; } .descend__line::after { animation: none; } }
+
+/* --- Home: full-bleed hero behind a transparent header (solid on scroll) --- */
+.is-home .site-header { position: fixed; left: 0; right: 0; background: transparent; backdrop-filter: none; border-bottom-color: transparent; transition: background 400ms ease, backdrop-filter 400ms ease, border-color 400ms ease; }
+.is-home .site-header .brand-lockup__logo { filter: brightness(0) invert(1); transition: filter 400ms ease; }
+.is-home .nav__toggle { color: #fff; }
+@media (min-width: 721px) {
+  .is-home .site-header:not(.is-scrolled) .nav a:not(.btn) { color: rgba(255,255,255,0.82); }
+  .is-home .site-header:not(.is-scrolled) .nav a:not(.btn):hover { color: #fff; }
+  .is-home .site-header:not(.is-scrolled) .brand-lockup__tagline { color: rgba(255,255,255,0.7); }
+}
+.is-home .site-header.is-scrolled { background: color-mix(in srgb, var(--bone) 90%, transparent); backdrop-filter: blur(var(--blur)); border-bottom: var(--rule); }
+.is-home .site-header.is-scrolled .brand-lockup__logo { filter: none; }
+.is-home .site-header.is-scrolled .nav__toggle { color: var(--charcoal); }
 
 /* --- Section head (title + meta) --- */
 .section-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: var(--space-3); margin-bottom: var(--space-6); border-bottom: var(--rule); padding-bottom: var(--space-4); }
@@ -322,8 +335,11 @@ a:hover .img-editorial, .group:hover .img-editorial { filter: grayscale(0) brigh
 /* --- Gatherings (alternating rows) --- */
 .section--warm { background: #efe8dc; }   /* warm linen tone, distinct from bone */
 .gatherings-list { display: flex; flex-direction: column; gap: var(--space-7); }
-.gathering-row__media { position: relative; }
+.gathering-row { transition: transform 400ms cubic-bezier(0.4,0,0.2,1); }
+.gathering-row__media { position: relative; transition: box-shadow 400ms ease; }
 .gathering-row h3 { transition: color 300ms ease; }
+.gathering-row:hover { transform: translateY(-8px); }
+.gathering-row:hover .gathering-row__media { box-shadow: 0 18px 40px -18px rgba(26,26,26,0.45); }
 .gathering-row:hover h3 { color: var(--maroon); }
 .gathering-row__more { position: relative; }
 .gathering-row__more::after { content: ""; position: absolute; left: 0; bottom: -1px; width: 0; height: 1px; background: var(--maroon); transition: width 350ms ease; }

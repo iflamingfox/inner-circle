@@ -10,17 +10,37 @@
     {{ range .Site.Menus.main }}
       <a href="{{ .PageRef | relURL }}">{{ .Name }}</a>
     {{ end }}
-    <a href="{{ .Site.Params.boxOffice }}" class="btn btn--primary" target="_blank" rel="noopener">Tickets</a>
+    <a href="{{ "/concerts/" | relURL }}" class="btn btn--primary">Events</a>
   </nav>
 </header>
 <script>
   (function () {
+    function init() {
     var btn = document.querySelector('[data-nav-toggle]');
     var nav = document.getElementById('primary-nav');
-    if (!btn || !nav) return;
-    btn.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
+    if (btn && nav) {
+      btn.addEventListener('click', function () {
+        var open = nav.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+    }
+    // Home: keep header transparent over the hero, turn solid once scrolled past it.
+    var header = document.querySelector('.site-header');
+    var hero = document.querySelector('.vhero');
+    if (header && hero) {
+      var onScroll = function () {
+        var threshold = hero.offsetHeight - 90;
+        header.classList.toggle('is-scrolled', window.scrollY > threshold);
+      };
+      onScroll();
+      window.addEventListener('scroll', onScroll, { passive: true });
+      window.addEventListener('resize', onScroll, { passive: true });
+    }
+    }
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
   })();
 </script>
