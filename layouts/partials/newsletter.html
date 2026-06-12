@@ -1,27 +1,24 @@
 <section class="section section--maroon" id="join">
-  <div class="container">
-    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center;">
-      <div class="stack">
-        <p class="label" style="color: var(--turmeric);">The Inner Circle</p>
-        <h2 class="t-headline-lg" style="color:#fff;">Join the<br><em>Inner Circle</em></h2>
-        <p class="t-body-lg" style="opacity:0.9; max-width: 42ch;">Inner Circle is more than a concert series — it is a fellowship of listeners. Join to be among the first to receive invitations to our intimate evenings, often before they are announced anywhere else.</p>
-      </div>
-      <div>
-        {{ with .Site.Params.buttondownUser }}
-        <form action="https://buttondown.email/api/emails/embed-subscribe/{{ . }}" method="post" target="_blank" class="stack">
-          <div class="field">
-            <label class="label" for="bd-email" style="color:#fff;">Email address</label>
-            <input class="input" style="color:#fff;" type="email" name="email" id="bd-email" required placeholder="you@example.com">
-          </div>
-          <button type="submit" class="btn btn--on-dark" style="margin-top: var(--space-2);">Request an Invitation</button>
-        </form>
-        {{ else }}
-        <div class="stack">
-          <p style="opacity:0.9;">To be added to the circle, write to us — we add new listeners personally.</p>
-          <a class="btn btn--on-dark" href="mailto:{{ .Site.Params.email }}?subject=Joining%20the%20Inner%20Circle">Request an Invitation</a>
+  <div class="container membership__grid">
+    <div class="stack">
+      <p class="label" style="color: var(--turmeric);">The Inner Circle</p>
+      <h2 class="t-display-xl" style="color:#fff; font-size: clamp(2.5rem, 6vw, 4.5rem);">Join the<br><em style="font-weight:300;">Inner Circle</em></h2>
+      <p class="t-body-lg" style="color: rgba(255,255,255,0.85); max-width: 44ch;">Inner Circle is more than a concert series — it is a fellowship of listeners. Join to receive invitations to our intimate evenings, often before they are announced anywhere else.</p>
+    </div>
+    <div class="membership__card">
+      {{ with .Site.Params.buttondownUser }}
+      <p style="color: var(--charcoal-soft); margin-bottom: var(--space-4);">Receive early notice of upcoming recitals at Inner Circle.</p>
+      <form action="https://buttondown.email/api/emails/embed-subscribe/{{ . }}" method="post" target="_blank" class="stack">
+        <div class="field">
+          <label class="label" for="bd-email">Email address</label>
+          <input class="input" type="email" name="email" id="bd-email" required placeholder="you@example.com">
         </div>
-        {{ end }}
-      </div>
+        <button type="submit" class="btn btn--primary" style="width:100%; justify-content:center; margin-top: var(--space-2);">Request an Invitation</button>
+      </form>
+      {{ else }}
+      <p style="color: var(--charcoal-soft); margin-bottom: var(--space-4);">To be added to the circle, write to us — we add new listeners personally.</p>
+      <a class="btn btn--primary" style="width:100%; justify-content:center;" href="mailto:{{ .Site.Params.email }}?subject=Joining%20the%20Inner%20Circle">Request an Invitation</a>
+      {{ end }}
     </div>
   </div>
 </section>

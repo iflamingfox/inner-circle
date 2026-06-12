@@ -19,93 +19,144 @@
   {{ with index $match 0 }}{{ $featured = . }}{{ end }}
 {{ end }}
 
-{{/* ---- HERO: the featured gathering ---- */}}
-{{ with $featured }}
-<section class="hero">
-  {{ $heroSrc := $.Params.heroImage | default "house/salon.jpg" }}
+{{/* ============================ 1 · VENUE HERO ============================ */}}
+<section class="vhero">
+  {{ $heroSrc := .Params.heroImage | default "house/sanctuary.jpg" }}
   {{ with resources.Get (printf "images/%s" $heroSrc) }}
-    {{ $h := .Fill "1920x1080 Smart" }}
-    <img class="hero__media" src="{{ $h.RelPermalink }}" alt="The salon at Inner Circle" width="1920" height="1080">
+    {{ $h := .Fill "2000x1200 Smart" }}
+    <img class="vhero__img" src="{{ $h.RelPermalink }}" alt="The salon at Inner Circle" width="2000" height="1200">
   {{ end }}
-  <div class="hero__overlay"></div>
-  <div class="hero__content">
-    <div class="container stack">
-      <p class="label" style="color: var(--turmeric);">The Next Gathering · {{ .Date.Format "January 2, 2006" }}</p>
-      <h1 class="t-display" style="max-width: 16ch;">{{ .Title }}</h1>
-      <p class="t-body-lg" style="color:#fff; opacity:0.92; max-width: 48ch;">{{ .Params.summary }}</p>
-      <div style="display:flex; gap:var(--space-2); flex-wrap:wrap; margin-top:var(--space-2);">
-        <a class="btn btn--primary" href="{{ .Params.ticketUrl }}" target="_blank" rel="noopener">Purchase Tickets</a>
-        <a class="btn btn--on-dark" href="{{ .RelPermalink }}">Read More</a>
+  <div class="vhero__overlay"></div>
+  <div class="vhero__content container">
+    <span class="eyebrow-pill">Hindustani Classical · Chevy Chase</span>
+    <h1 class="t-display-xl">The Sanctuary<br>of <span style="font-style:italic;font-weight:300;">Inner Circle</span></h1>
+    <p>A private home where the unamplified note is heard the way it was meant to be — a few feet away, among a small circle of listeners.</p>
+    <div style="margin-top: var(--space-4);">
+      <a class="btn btn--on-dark" href="{{ "/the-house/" | relURL }}">Step Inside the House</a>
+    </div>
+  </div>
+  <a class="descend" href="#featured" aria-label="Scroll down">
+    <span>Descend</span>
+    <span class="descend__line"></span>
+  </a>
+</section>
+
+{{/* ========================= 2 · FEATURED CONCERT ========================= */}}
+{{ with $featured }}
+<section class="section" id="featured">
+  <div class="container feature reveal">
+    <div class="feature__grid">
+      <div>
+        <div class="feature__meta">
+          <span class="label" style="color:inherit;">{{ .Date.Format "January 2, 2006" }}</span>
+          <span class="rule"></span>
+          <span class="label" style="color:inherit;">The Next Gathering</span>
+        </div>
+        <h2 class="font-display">{{ .Title }}</h2>
+        <p class="t-body-lg" style="color: var(--charcoal-soft); max-width: 42ch;">{{ .Params.summary }}</p>
+        <p class="label" style="margin-top: var(--space-3);">{{ .Params.artist }} · {{ .Params.instrument }}</p>
+        <div class="feature__actions">
+          <a class="btn btn--primary" href="{{ .Params.ticketUrl }}" target="_blank" rel="noopener">Purchase Tickets</a>
+          <a class="btn" href="{{ .RelPermalink }}">View Programme</a>
+        </div>
+      </div>
+      <div class="feature__media">
+        <div class="feature__media-frame">
+          {{ with resources.Get (printf "images/%s" .Params.image) }}
+            {{ $f := .Fill "900x1125 Smart" }}
+            <img src="{{ $f.RelPermalink }}" alt="{{ $.Params.artist }}" width="900" height="1125" style="width:100%;height:100%;object-fit:cover;">
+          {{ end }}
+        </div>
+        <div class="feature__tag"><span class="label">Featured Artist</span></div>
       </div>
     </div>
   </div>
 </section>
 {{ end }}
 
-{{/* ---- UPCOMING GATHERINGS ---- */}}
+{{/* ========================= 3 · UPCOMING GATHERINGS ====================== */}}
 {{ $rest := where $upcoming "Permalink" "!=" $featured.Permalink }}
 {{ if $rest }}
-<section class="section">
-  <div class="container">
-    <header class="stack" style="margin-bottom: var(--space-5);">
-      <p class="label label--maroon">The Season</p>
-      <h2 class="t-headline-lg">Upcoming <em class="t-accent">Gatherings</em></h2>
-    </header>
-    <div>
-      {{ range $i, $c := $rest }}
-      <article class="gathering">
-        <span class="gathering__num">{{ printf "%02d" (add $i 1) }}</span>
-        <div class="stack" style="--space-3: var(--space-2);">
-          <p class="label">{{ $c.Date.Format "Jan 2" }} · {{ $c.Params.instrument }}</p>
-          <h3 class="t-headline-md" style="margin:0;"><a href="{{ $c.RelPermalink }}" style="color:inherit;">{{ $c.Title }}</a></h3>
-          <p style="max-width: 52ch;">{{ $c.Params.summary }}</p>
-          <a class="label label--maroon" href="{{ $c.RelPermalink }}">Read More →</a>
-        </div>
-        {{ with resources.Get (printf "images/%s" $c.Params.image) }}
-          {{ $t := .Fill "240x300 Smart" }}
-          <img class="gathering__media" src="{{ $t.RelPermalink }}" alt="{{ $c.Params.artist }}" loading="lazy" width="240" height="300">
-        {{ end }}
-      </article>
-      {{ end }}
-    </div>
-  </div>
-</section>
-{{ end }}
-
-{{/* ---- THE HOUSE: atmosphere ---- */}}
 <section class="section section--bone-dim">
-  <div class="container">
-    <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-6); align-items: center;">
-      <div class="stack">
-        <p class="label label--maroon">The House</p>
-        <h2 class="t-headline-lg">A contemporary room<br>for ancient music</h2>
-        <p class="t-body-lg" style="max-width: 46ch;">Inner Circle is a private home of light, oak, and stone in Chevy Chase. No stage, no barriers — the musicians perform from the floor of the living room, a few feet away.</p>
-        <a class="btn" href="{{ "/the-house/" | relURL }}" style="margin-top: var(--space-2);">Step Inside</a>
-      </div>
-      <div class="grid" style="grid-template-columns: 1fr 1fr; gap: var(--space-2);">
-        {{ with resources.Get "images/house/salon.jpg" }}{{ $a := .Fill "500x620 Smart" }}<img src="{{ $a.RelPermalink }}" alt="The salon" loading="lazy" style="width:100%;height:100%;object-fit:cover;">{{ end }}
-        {{ with resources.Get "images/house/stair-art.jpg" }}{{ $b := .Fill "500x620 Smart" }}<img src="{{ $b.RelPermalink }}" alt="Art and instruments" loading="lazy" style="width:100%;height:100%;object-fit:cover;margin-top:var(--space-5);">{{ end }}
-      </div>
+  <div class="container reveal">
+    <div class="section-head">
+      <h2 class="t-headline-lg">Gatherings</h2>
+      <span class="label">Season {{ $featured.Date.Format "2006" }}</span>
     </div>
-  </div>
-</section>
-
-{{/* ---- FROM THE ARCHIVE (only when past concerts exist) ---- */}}
-{{ if $past }}
-<section class="section">
-  <div class="container">
-    <header style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom: var(--space-5); gap: var(--space-3); flex-wrap:wrap;">
-      <h2 class="t-headline-lg">The <em class="t-accent">Archive</em></h2>
-      <a class="label label--maroon" href="{{ "/archive/" | relURL }}">View Full Archive →</a>
-    </header>
-    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));">
-      {{ range first 4 $past }}
-        {{ partial "concert-card.html" . }}
+    <div class="gatherings-list">
+      {{ range $i, $c := $rest }}
+      <a class="gathering-row {{ if eq (mod $i 2) 1 }}gathering-row--reverse{{ end }}" href="{{ $c.RelPermalink }}">
+        <div class="gathering-row__media">
+          {{ with resources.Get (printf "images/%s" $c.Params.image) }}
+            {{ $t := .Fill "800x800 Smart" }}
+            <img class="img-editorial" src="{{ $t.RelPermalink }}" alt="{{ $c.Params.artist }}" loading="lazy" width="800" height="800">
+          {{ end }}
+        </div>
+        <div class="gathering-row__body">
+          <div class="gathering-row__date">
+            <span class="d">{{ $c.Date.Format "Jan 2" }}</span>
+            <span class="label">{{ $c.Params.instrument }}</span>
+          </div>
+          <h3>{{ $c.Title }}</h3>
+          <p style="color: var(--charcoal-soft); max-width: 46ch;">{{ $c.Params.summary }}</p>
+          <span class="gathering-row__more label" style="color: var(--maroon);">Discover More</span>
+        </div>
+      </a>
       {{ end }}
     </div>
   </div>
 </section>
 {{ end }}
+
+{{/* ============================== 4 · ARCHIVE ============================= */}}
+<section class="section">
+  <div class="container reveal">
+    <div class="section-head">
+      <div>
+        <h2 class="t-headline-lg" style="border:0; padding:0; margin:0;">The Archive</h2>
+        <p style="color: var(--charcoal-soft); margin: var(--space-1) 0 0;">Past gatherings, preserved.</p>
+      </div>
+      <a class="label label--maroon" href="{{ "/archive/" | relURL }}" style="border-bottom:1px solid var(--maroon); padding-bottom:2px;">Full Catalogue</a>
+    </div>
+    {{ if $past }}
+    <div class="archive-grid">
+      {{ range first 4 $past }}
+      <a class="archive-card group" href="{{ .RelPermalink }}">
+        <div class="archive-card__frame">
+          {{ with resources.Get (printf "images/%s" .Params.image) }}
+            {{ $a := .Fill "600x800 Smart" }}
+            <img class="img-editorial" src="{{ $a.RelPermalink }}" alt="{{ .Params.artist }}" loading="lazy" width="600" height="800">
+          {{ end }}
+        </div>
+        <h4>{{ .Params.artist }}</h4>
+        <span class="label">{{ .Date.Format "Jan · 2006" }}</span>
+      </a>
+      {{ end }}
+    </div>
+    {{ else }}
+    <div class="card" style="text-align:center; padding: var(--space-6);">
+      <p class="t-headline-md" style="margin:0 0 var(--space-2);">The archive is still being written.</p>
+      <p style="margin:0 auto; max-width: 46ch; color: var(--charcoal-soft);">Our first gatherings are yet to come. After each evening passes, it will find its place here.</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
 
 {{ partial "newsletter.html" . }}
+
+<script>
+  (function () {
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      els.forEach(function (e) { e.classList.add('is-visible'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12 });
+    els.forEach(function (e) { io.observe(e); });
+  })();
+</script>
 {{ end }}
