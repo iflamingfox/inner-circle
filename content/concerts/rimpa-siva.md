@@ -18,9 +18,9 @@ program:
     desc: "An electrifying solo moving through **gats, tukras, and relas** with stunning clarity."
 ---
 
-We are thrilled to welcome **Rimpa Siva** — the *Princess of Tabla* — one of India's most celebrated tabla artists.
+We are thrilled to welcome **Rimpa Siva** — widely known as the *Princess of Tabla*, the title of the 1999 French documentary that brought her early artistry to international attention.
 
-She grew up in a tradition that rarely welcomed girls, and transformed it from the inside. A prodigy trained in the Farukhabad gharana by her father, Prof. Swapan Siva, she brings to the tabla a combination of technical precision, spontaneity, and expressive power that is genuinely uncommon.
+Born in 1986, she grew up in a tradition that has rarely welcomed women, and transformed it from the inside. A prodigy trained in the Farukhabad gharana by her father, **Prof. Swapan Siva**, she gave her first stage performance in Kolkata at the age of eight. She went on to earn her M.A. from Rabindra Bharati University, and brings to the tabla a combination of technical precision, spontaneity, and expressive power that is genuinely uncommon.
 
 Her performances open with a long, meditative *peshkar* that gives way to an electrifying solo moving through *gats*, *tukras*, and *relas* with stunning clarity. The tabla in her hands is not accompaniment — it is the full voice of the evening.
 

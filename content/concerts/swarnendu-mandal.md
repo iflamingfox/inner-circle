@@ -8,8 +8,9 @@ accompanists: []
 summary: "One of Hindustani classical music's most exciting young voices — the sarod's fretless steel fingerboard, the purity of the Senia Shahjahanpur gharana."
 image: "concerts/swarnendu-mandal.jpg"
 ticketUrl: "https://www.tickettailor.com/events/ibeam/2258074"
-doors: "6:00 PM"
-starts: "6:30 PM"
+doors: "5:00 PM"
+starts: "5:30 PM"
+note: "No late entry"
 program:
   - time: "The Sound"
     desc: "The sarod's fretless steel fingerboard enables **meend** — gliding, microtonal shifts that mimic the human voice."
@@ -21,7 +22,7 @@ Join us for an intimate, living-room concert featuring one of Hindustani classic
 
 ### The Artist
 
-**Swarnendu Mandal** brings the sarod to life with a rare combination of technical precision and lyrical sensitivity. A direct disciple of the late Padmabhushan Pt. Buddhadev Dasgupta, he carries forward the tradition of the Senia Shahjahanpur Gharana — a lineage prized for its purity of tone and deeply melodic approach to raga. Swarnendu has performed at the G20 Summit in Varanasi, toured Europe, and been recognized with the CCRT National Scholarship from the Government of India.
+Hailing from Kolkata, **Swarnendu Mandal** brings the sarod — the fretless, deep-toned lute whose polished steel fingerboard makes its singing glides possible — to life with a rare combination of technical precision and lyrical sensitivity. A disciple of the late Padmabhushan **Pt. Buddhadev Dasgupta** and of **Ustad Abir Hussain**, he carries forward the **Senia–Shahjahanpur gharana**, a lineage prized for its purity of tone and deeply melodic approach to raga. Still in his twenties, Swarnendu has performed at the G20 Summit (2023) in Varanasi and the ITC Sangeet Sammelan, toured Europe, and holds the CCRT National Scholarship from the Ministry of Culture, Government of India.
 
 ### Why This Is Special
 

@@ -63,7 +63,9 @@
           <p class="label label--maroon" style="margin-bottom: var(--space-2);">Logistics</p>
           <p style="margin:0;"><strong>Doors</strong> {{ .Params.doors }}<br>
           <strong>Begins</strong> {{ .Params.starts }}<br>
+          {{ with .Params.price }}<strong>Tickets</strong> {{ . }}<br>{{ end }}
           <strong>Where</strong> {{ .Site.Params.venueName }}, {{ .Site.Params.venueAddress }}</p>
+          {{ with .Params.note }}<p class="label" style="margin-top: var(--space-2); color: var(--charcoal-soft);">{{ . }}</p>{{ end }}
           {{ if not $isPast }}
           <a class="btn btn--primary" href="{{ .Params.ticketUrl }}" target="_blank" rel="noopener" style="margin-top: var(--space-3);">Purchase Tickets</a>
           {{ end }}

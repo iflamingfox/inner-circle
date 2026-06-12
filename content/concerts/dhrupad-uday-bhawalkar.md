@@ -12,6 +12,8 @@ image: "concerts/dhrupad-uday-bhawalkar.jpg"
 ticketUrl: "https://www.tickettailor.com/events/ibeam/2173802"
 doors: "5:00 PM"
 starts: "5:30 PM"
+price: "Concert $40 · Workshop + Concert $250"
+note: "No late entry · Only 60 seats"
 program:
   - time: "Jul 5"
     desc: "**Concert** — an intimate Dhrupad recital. Doors 5:00 PM, recital begins promptly 5:30 PM."
@@ -23,7 +25,9 @@ Dhrupad, the ancient and sublime vocal tradition of Hindustani classical music, 
 
 ### Witness a Living Legend
 
-Pt. Uday Bhawalkar is a standard-bearer for generations of vocalists. His mastery is unparalleled, his voice a powerful instrument that embodies the very essence of Dhrupad. He is accompanied by his senior disciple Sri Kirit Singh, and by the masterful Sri Pratap Awad on the pakhawaj — a virtuoso whose artistry on the double-headed, barrel-shaped drum perfectly complements the vocals. Together they create a sound that is both meditative and deeply moving.
+Born in Ujjain in 1966, **Pt. Uday Bhawalkar** is among the foremost living exponents of Dhrupad — the oldest surviving form of Hindustani classical vocal music. He spent over a decade immersed in the traditional *guru-shishya parampara* under the towering Dagar brothers, **Ustad Zia Fariduddin Dagar** and **Ustad Zia Mohiuddin Dagar**, and sings in their *Dagarvani* style. Honoured with the Sangeet Natak Akademi Award (2021) and the Kumar Gandharva Samman, he today teaches at the ITC Sangeet Research Academy in Kolkata while performing across the world from his base in Pune.
+
+He is accompanied by **Sri Pratap Awad** on the pakhawaj — the double-headed, barrel-shaped drum that traditionally partners Dhrupad — and by his senior disciple **Sri Kirit Singh**. Together they create a sound that is both meditative and deeply moving.
 
 ### Two Ways to Attend
 

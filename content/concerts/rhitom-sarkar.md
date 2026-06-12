@@ -2,11 +2,11 @@
 title: "Rhitom Sarkar Live — Raga, Resonance & the Sliding String"
 date: 2026-09-12T18:00:00-04:00
 endDate: 2026-09-12T21:00:00-04:00
-artist: "Pt. Rhitom Sarkar"
-instrument: "Mohan Veena (slide guitar)"
+artist: "Rhitom Sarkar"
+instrument: "Hindustani Slide Guitar"
 accompanists:
   - "Debu Nayak — Tabla"
-summary: "A pin-drop evening of the Mohan Veena — the gliding, vocal-like slide guitar that sits between a sitar's resonance and a steel guitar's sustain."
+summary: "A pin-drop evening of the Hindustani slide guitar — gliding, vocal-like tones from a disciple of slide-guitar pioneer Pt. Debashish Bhattacharya."
 image: "concerts/rhitom-sarkar.jpg"
 ticketUrl: "https://www.tickettailor.com/events/ibeam/2257939"
 doors: "6:00 PM"
@@ -22,9 +22,9 @@ Join us for an intimate, living-room concert featuring one of Hindustani classic
 
 ### The Artists
 
-**Pt. Rhitom Sarkar** leads the evening on the Mohan Veena — a specialized slide guitar that sits in the sonic space between a sitar's resonance and a steel guitar's soulful sustain. A celebrated disciple of Pt. Debashish Bhattacharya, Rhitom's playing is the result of years of research blending Spanish guitar techniques with the liquid, vocal-like *Gayaki Ang* of Hindustani ragas.
+**Rhitom Sarkar** leads the evening on the Hindustani classical slide guitar — a guitar laid flat and played with a sliding bar, coaxed into the liquid, vocal-like glides of Indian raga. He began learning at the age of nine under **Pt. Debashish Bhattacharya**, the celebrated pioneer of Indian slide guitar, studying with him for a decade before continuing his training with other masters. His instrument sits in the sonic space between a sitar's resonance and a steel guitar's soulful sustain.
 
-He is joined by **Debu Nayak on tabla** — a master of rhythm whose intricate finger-work creates a dynamic, living dialogue with the sliding tones of the Veena.
+He is joined by **Debu Nayak on tabla** — whose intricate finger-work creates a dynamic, living dialogue with the sliding tones of the guitar.
 
 ### Why This Is Special
 
