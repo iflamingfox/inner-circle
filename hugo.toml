@@ -1,4 +1,4 @@
-baseURL = "https://innercircle.netlify.app/"
+baseURL = "https://innercirclehouse.netlify.app/"
 defaultContentLanguage = "en"
 title = "Inner Circle"
 # Concerts are dated in the future — they MUST be built and shown.
