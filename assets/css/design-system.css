@@ -375,6 +375,35 @@ a:hover .img-editorial, .group:hover .img-editorial { filter: grayscale(0) brigh
 .membership__card .input { color: var(--charcoal); width: 100%; }
 .membership__card .input::placeholder { color: var(--outline-strong); opacity: 0.5; }
 
+/* --- Feature (editorial event page) --- */
+.feat-hero { position: relative; min-height: clamp(520px, 82vh, 900px); display: flex; align-items: flex-end; overflow: hidden; background: var(--charcoal); }
+.feat-hero__img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.feat-hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(15,12,12,0.35) 0%, rgba(15,12,12,0.1) 40%, rgba(15,12,12,0.82) 100%); }
+.feat-hero__content { position: relative; z-index: 2; padding-block: var(--space-7); color: #fff; text-shadow: 0 1px 30px rgba(0,0,0,0.45); }
+.feat-hero__content h1 { color: #fff; }
+
+.lede { font-family: var(--font-display); font-size: clamp(1.5rem, 3.2vw, 2.4rem); line-height: 1.35; font-weight: 400; max-width: 28ch; margin: 0 auto; text-align: center; color: var(--charcoal); }
+.lede em { color: var(--maroon); }
+
+.figure-wide { margin: 0; }
+.figure-wide img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+.figure-wide figcaption { margin-top: var(--space-2); text-align: center; }
+
+.pullquote { font-family: var(--font-display); font-style: italic; font-size: clamp(1.75rem, 4vw, 3rem); line-height: 1.3; font-weight: 400; color: #fff; max-width: 22ch; margin: 0 auto; }
+.pullquote em { color: var(--turmeric); font-style: normal; }
+
+.facts { list-style: none; padding: 0; margin: var(--space-4) 0 0; display: grid; gap: var(--space-2); }
+.facts li { position: relative; padding-left: var(--space-3); color: rgba(243,240,239,0.85); }
+.facts li::before { content: "—"; position: absolute; left: 0; color: var(--turmeric); }
+
+.foundation-imgs { display: grid; gap: var(--space-3); }
+.foundation-imgs img { width: 100%; object-fit: cover; }
+.foundation-imgs img:first-child { aspect-ratio: 4/5; }
+.foundation-imgs img:last-child { aspect-ratio: 4/3; }
+@media (min-width: 600px) { .foundation-imgs { grid-template-columns: 1fr 1fr; align-items: start; } .foundation-imgs img:last-child { margin-top: var(--space-5); } }
+
+@media (max-width: 700px) { .prose[style*="columns"] { columns: 1 !important; } }
+
 /* --- Scroll reveal --- */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 900ms ease, transform 900ms ease; }
 .reveal.is-visible { opacity: 1; transform: none; }

@@ -1,0 +1,171 @@
+{{ define "main" }}
+{{ $base := "" }}
+
+{{/* ============================ HERO ============================ */}}
+<section class="feat-hero">
+  {{ with resources.Get (printf "images/%s" .Params.image) }}
+    {{ $h := .Fill "2200x1300 Smart" }}
+    <img class="feat-hero__img" src="{{ $h.RelPermalink }}" alt="{{ $.Params.artist }}" width="2200" height="1300">
+  {{ end }}
+  <div class="feat-hero__overlay"></div>
+  <div class="feat-hero__content container">
+    {{ with .Params.heroKicker }}<span class="eyebrow-pill">{{ . }}</span>{{ end }}
+    <h1 class="t-display-xl">{{ .Params.artist }}</h1>
+    <p class="label" style="color: rgba(255,255,255,0.85); margin-top: var(--space-2);">{{ .Date.Format "Monday, January 2, 2006" }} · {{ .Site.Params.venueName }}</p>
+    <div style="margin-top: var(--space-3);">
+      <a class="btn btn--primary" href="{{ .Params.ticketUrl }}" target="_blank" rel="noopener">Purchase Tickets</a>
+    </div>
+  </div>
+</section>
+
+{{/* ============================ LEDE ============================ */}}
+{{ with .Params.lede }}
+<section class="section--tight" style="padding-block: var(--space-6);">
+  <div class="container">
+    <p class="lede">{{ . | markdownify }}</p>
+  </div>
+</section>
+{{ end }}
+
+{{/* ======================= THE PERFORMANCE ======================= */}}
+<section class="section--tight" style="padding-bottom: var(--space-6);">
+  <div class="container">
+    {{ with .Params.venueImage }}
+    {{ with resources.Get (printf "images/%s" .) }}
+      {{ $v := .Fill "1800x1000 Smart" }}
+      <figure class="figure-wide">
+        <img src="{{ $v.RelPermalink }}" alt="Pandit Uday Bhawalkar performing at Inner Circle" loading="lazy">
+        <figcaption class="label">A previous evening of Dhrupad at Inner Circle</figcaption>
+      </figure>
+    {{ end }}
+    {{ end }}
+    <div class="feature__grid" style="margin-top: var(--space-6); align-items: start;">
+      <div class="prose">
+        <p class="label label--maroon" style="margin-bottom: var(--space-3);">The Evening</p>
+        {{ .Content }}
+      </div>
+      <aside class="stack" style="--space-3: var(--space-4);">
+        {{ with .Params.program }}
+        <div>
+          <p class="label label--maroon" style="margin-bottom: var(--space-3);">Programme</p>
+          <div class="program">
+            {{ range . }}
+            <div class="program__row"><span class="program__time">{{ .time }}</span><span class="program__desc">{{ .desc | markdownify }}</span></div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+        <div class="card">
+          <p class="label label--maroon" style="margin-bottom: var(--space-2);">Logistics</p>
+          <p style="margin:0;"><strong>Doors</strong> {{ .Params.doors }}<br>
+          <strong>Begins</strong> {{ .Params.starts }}<br>
+          {{ with .Params.price }}<strong>Tickets</strong> {{ . }}<br>{{ end }}
+          <strong>Where</strong> {{ .Site.Params.venueName }}, {{ .Site.Params.venueAddress }}</p>
+          {{ with .Params.note }}<p class="label" style="margin-top: var(--space-2); color: var(--charcoal-soft);">{{ . }}</p>{{ end }}
+          <a class="btn btn--primary" href="{{ .Params.ticketUrl }}" target="_blank" rel="noopener" style="margin-top: var(--space-3);">Purchase Tickets</a>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{{/* ============================ PULL-QUOTE ============================ */}}
+{{ with .Params.quote }}
+<section class="section--charcoal" style="padding-block: var(--space-7);">
+  <div class="container" style="text-align:center;">
+    <blockquote class="pullquote">“{{ . | markdownify | safeHTML }}”</blockquote>
+    {{ with $.Params.quoteBy }}<p class="label" style="color: var(--turmeric); margin-top: var(--space-3);">{{ . }}</p>{{ end }}
+  </div>
+</section>
+{{ end }}
+
+{{/* ============================ THE ARTIST ============================ */}}
+<section class="section">
+  <div class="container">
+    <div class="feature__grid" style="align-items: center;">
+      <div class="feature__media">
+        {{ with resources.Get (printf "images/%s" .Params.artistImage) }}
+          {{ $p := .Fill "900x1125 Smart" }}
+          <div class="feature__media-frame"><img src="{{ $p.RelPermalink }}" alt="{{ $.Params.artist }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;"></div>
+        {{ end }}
+        <div class="feature__tag"><span class="label">The Artist</span></div>
+      </div>
+      <div>
+        <p class="label label--maroon">The Artist</p>
+        <h2 class="t-headline-lg" style="margin-top: var(--space-2);">Pandit Uday<br>Bhawalkar</h2>
+        <div class="prose" style="margin-top: var(--space-3);">{{ .Params.artistBio | markdownify }}</div>
+        {{ with .Params.accolades }}
+        <div style="display:flex; flex-wrap:wrap; gap: var(--space-1); margin-top: var(--space-4);">
+          {{ range . }}<span class="chip" style="background:transparent; border:1px solid var(--outline-strong);">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{/* ============================ THE LINEAGE ============================ */}}
+{{ with .Params.gurus }}
+<section class="section section--warm">
+  <div class="container">
+    <div class="section-head">
+      <h2 class="t-headline-lg">The Lineage</h2>
+      <span class="label">The Dagarvani</span>
+    </div>
+    {{ with $.Params.lineageIntro }}<p class="t-body-lg" style="max-width: 60ch; color: var(--charcoal-soft); margin-bottom: var(--space-6);">{{ . | markdownify }}</p>{{ end }}
+    <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: var(--space-5);">
+      {{ range . }}
+      {{ $name := .name }}{{ $role := .role }}{{ $note := .note }}{{ $gimg := .image }}
+      <article>
+        {{ with resources.Get (printf "images/%s" $gimg) }}
+          {{ $g := .Fill "700x850 Smart" }}
+          <img class="img-editorial" src="{{ $g.RelPermalink }}" alt="{{ $name }}" loading="lazy" style="width:100%; aspect-ratio:4/5; object-fit:cover;">
+        {{ end }}
+        <h3 class="t-title" style="margin: var(--space-3) 0 0;">{{ $name }}</h3>
+        <p class="label label--maroon" style="margin: var(--space-1) 0 var(--space-2);">{{ $role }}</p>
+        <p style="color: var(--charcoal-soft); max-width: 42ch;">{{ $note | markdownify }}</p>
+      </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* ======================= SWARKUL FOUNDATION ======================= */}}
+{{ with .Params.foundationName }}
+<section class="section section--charcoal">
+  <div class="container">
+    <div class="feature__grid" style="align-items: center;">
+      <div>
+        <p class="label" style="color: var(--turmeric);">{{ $.Params.foundationKicker }}</p>
+        <h2 class="t-headline-lg" style="color:#fff; margin-top: var(--space-2);">{{ . }}</h2>
+        {{ with $.Params.foundationQuote }}<p class="t-headline-md" style="color: var(--inverse-primary, #ffb3b5); font-style: italic; margin: var(--space-3) 0;">“{{ . }}”</p>{{ end }}
+        <div class="prose" style="color: rgba(243,240,239,0.85);">{{ $.Params.foundationBody | markdownify }}</div>
+        {{ with $.Params.foundationFacts }}
+        <ul class="facts">
+          {{ range . }}<li>{{ . }}</li>{{ end }}
+        </ul>
+        {{ end }}
+        {{ with $.Params.foundationLink }}<a class="btn btn--on-dark" href="{{ . }}" target="_blank" rel="noopener" style="margin-top: var(--space-4);">Visit the Foundation</a>{{ end }}
+      </div>
+      <div class="foundation-imgs">
+        {{ with resources.Get (printf "images/%s" $.Params.foundationImage) }}{{ $a := .Fill "800x1000 Smart" }}<img src="{{ $a.RelPermalink }}" alt="The Swarkul gurukul" loading="lazy">{{ end }}
+        {{ with resources.Get (printf "images/%s" $.Params.foundationImage2) }}{{ $b := .Fill "800x600 Smart" }}<img src="{{ $b.RelPermalink }}" alt="A baithak at the gurukul" loading="lazy">{{ end }}
+      </div>
+    </div>
+  </div>
+</section>
+{{ end }}
+
+{{/* ============================ ON DHRUPAD ============================ */}}
+{{ with .Params.dhrupadBody }}
+<section class="section">
+  <div class="container">
+    <div class="section-head"><h2 class="t-headline-lg">On Dhrupad</h2><span class="label">The Oldest Voice</span></div>
+    <div class="prose" style="columns: 2; column-gap: var(--space-6); max-width: none;">{{ . | markdownify }}</div>
+  </div>
+</section>
+{{ end }}
+
+{{ partial "newsletter.html" . }}
+{{ end }}
