@@ -1,0 +1,11 @@
+{{ define "main" }}
+<section class="section">
+  <div class="container stack">
+    <h1 class="t-headline-lg">{{ .Title }}</h1>
+    <div class="prose">{{ .Content }}</div>
+    <ul style="list-style:none; padding:0;">
+      {{ range .Pages }}<li style="padding-block: var(--space-2); border-top: var(--rule);"><a href="{{ .RelPermalink }}" class="t-title">{{ .Title }}</a></li>{{ end }}
+    </ul>
+  </div>
+</section>
+{{ end }}

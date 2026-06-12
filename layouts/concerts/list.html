@@ -1,0 +1,31 @@
+{{ define "main" }}
+{{ $concerts := where site.RegularPages "Section" "concerts" }}
+{{ $now := now }}
+{{ $upcoming := slice }}{{ $past := slice }}
+{{ range $concerts }}
+  {{ $end := .Date }}{{ with .Params.endDate }}{{ $end = (time.AsTime .) }}{{ end }}
+  {{ if ge $end $now }}{{ $upcoming = $upcoming | append . }}{{ else }}{{ $past = $past | append . }}{{ end }}
+{{ end }}
+{{ $upcoming = sort $upcoming "Date" "asc" }}
+
+<section class="section">
+  <div class="container">
+    <header class="stack" style="margin-bottom: var(--space-6); max-width: 60ch;">
+      <p class="label label--maroon">Inner Circle</p>
+      <h1 class="t-headline-lg">Upcoming <em class="t-accent">Gatherings</em></h1>
+      <p class="t-body-lg">{{ .Content | plainify }}</p>
+    </header>
+    {{ if $upcoming }}
+    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-5);">
+      {{ range $upcoming }}{{ partial "concert-card.html" . }}{{ end }}
+    </div>
+    {{ else }}
+    <p class="t-body-lg">No gatherings are currently scheduled. Join the <a href="#join">Inner Circle</a> to be the first to know.</p>
+    {{ end }}
+    {{ if $past }}
+    <p style="margin-top: var(--space-6);"><a class="label label--maroon" href="{{ "/archive/" | relURL }}">View the Archive of past gatherings →</a></p>
+    {{ end }}
+  </div>
+</section>
+{{ partial "newsletter.html" . }}
+{{ end }}

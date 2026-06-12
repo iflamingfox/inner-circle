@@ -1,0 +1,26 @@
+name: Scheduled rebuild
+
+# Rebuilds the site once a day so that, the morning after a concert, it
+# automatically slides from "upcoming" into the archive — with no manual edit.
+#
+# Setup: in the repo Settings → Secrets and variables → Actions, add a secret
+# named NETLIFY_BUILD_HOOK containing the build hook URL from
+# Netlify → Site configuration → Build & deploy → Build hooks.
+
+on:
+  schedule:
+    - cron: "15 7 * * *"   # 07:15 UTC daily (~03:15 America/New_York)
+  workflow_dispatch:        # allow manual "Run workflow" from the Actions tab
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Ping Netlify build hook
+        run: |
+          if [ -z "${{ secrets.NETLIFY_BUILD_HOOK }}" ]; then
+            echo "NETLIFY_BUILD_HOOK secret is not set — skipping."
+            exit 0
+          fi
+          curl -fsSL -X POST -d '{}' "${{ secrets.NETLIFY_BUILD_HOOK }}"
+          echo "Triggered Netlify rebuild."

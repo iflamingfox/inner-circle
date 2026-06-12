@@ -1,0 +1,75 @@
+# Sveltia CMS configuration for Inner Circle
+# Backup editing path — most edits are made through Claude, but this gives a
+# friendly web UI at /admin for editing concerts and pages on any device.
+#
+# IMPORTANT: set `repo` to your GitHub "username/repository" once it exists.
+
+backend:
+  name: github
+  repo: REPLACE_WITH/your-repo   # e.g. loganissian/inner-circle
+  branch: main
+  # Sveltia uses its own hosted GitHub OAuth by default (no server needed).
+
+# Editorial workflow off — publish goes straight to main (simple for one editor).
+publish_mode: simple
+
+media_folder: "assets/images/uploads"
+public_folder: "uploads"
+
+collections:
+  # ----------------------------------------------------------------------- #
+  - name: concerts
+    label: "Concerts"
+    label_singular: "Concert"
+    folder: "content/concerts"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}} — {{date | date('MMM D, YYYY')}}"
+    sortable_fields: [date, title]
+    fields:
+      - { label: "Title", name: title, widget: string }
+      - { label: "Event date & time", name: date, widget: datetime, hint: "When the concert happens. Drives whether it shows as upcoming or moves to the archive." }
+      - { label: "End date & time", name: endDate, widget: datetime, required: false, hint: "For multi-day events. The concert stays 'upcoming' until this passes." }
+      - { label: "Artist", name: artist, widget: string }
+      - { label: "Instrument / tradition", name: instrument, widget: string, hint: "e.g. Tabla, Sarod, Dhrupad Vocal" }
+      - { label: "Accompanists", name: accompanists, widget: list, required: false, field: { label: "Name & role", name: name, widget: string }, hint: "e.g. 'Debu Nayak — Tabla'" }
+      - { label: "Summary", name: summary, widget: text, hint: "One sentence shown on the home page and cards." }
+      - { label: "Banner image", name: image, widget: image, media_folder: "/assets/images/concerts", public_folder: "concerts", hint: "Wide promotional banner (used as the concert page hero)." }
+      - { label: "Ticket URL", name: ticketUrl, widget: string, hint: "Link to the Ticket Tailor event page." }
+      - { label: "Doors time", name: doors, widget: string, default: "6:00 PM" }
+      - { label: "Begins time", name: starts, widget: string, default: "6:30 PM" }
+      - label: "Programme (The Evening)"
+        name: program
+        widget: list
+        required: false
+        fields:
+          - { label: "Time / heading", name: time, widget: string }
+          - { label: "Description", name: desc, widget: string }
+      - { label: "Body", name: body, widget: markdown }
+
+  # ----------------------------------------------------------------------- #
+  - name: pages
+    label: "Pages"
+    files:
+      - name: home
+        label: "Home page settings"
+        file: "content/_index.md"
+        fields:
+          - { label: "Title", name: title, widget: hidden, default: "Inner Circle" }
+          - { label: "Featured concert override", name: featuredConcert, widget: string, required: false, hint: "Filename slug of a concert to force into the hero (e.g. 'rimpa-siva'). Leave blank to auto-feature the next upcoming concert." }
+          - { label: "Hero background image", name: heroImage, widget: image, media_folder: "/assets/images/house", public_folder: "house", hint: "A venue photo for the home hero." }
+      - name: the_house
+        label: "The House"
+        file: "content/the-house.md"
+        fields:
+          - { label: "Title", name: title, widget: string }
+          - { label: "URL", name: url, widget: hidden, default: "/the-house/" }
+          - { label: "Description", name: description, widget: text }
+          - { label: "Hero image", name: heroImage, widget: image, media_folder: "/assets/images/house", public_folder: "house" }
+          - label: "Gallery"
+            name: gallery
+            widget: list
+            fields:
+              - { label: "Image", name: image, widget: image, media_folder: "/assets/images/house", public_folder: "house" }
+              - { label: "Caption", name: caption, widget: string }
+          - { label: "Body", name: body, widget: markdown }

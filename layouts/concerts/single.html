@@ -1,0 +1,77 @@
+{{ define "main" }}
+{{ $isPast := false }}
+{{ $end := .Date }}{{ with .Params.endDate }}{{ $end = (time.AsTime .) }}{{ end }}
+{{ if lt $end now }}{{ $isPast = true }}{{ end }}
+
+{{/* ---- HERO BAND (the promotional banner) ---- */}}
+<section class="hero" style="background: var(--charcoal);">
+  {{ with resources.Get (printf "images/%s" .Params.image) }}
+    {{ $h := .Resize "1920x" }}
+    <img class="hero__media" style="height: clamp(320px, 48vh, 520px); object-fit: cover;" src="{{ $h.RelPermalink }}" alt="{{ $.Params.artist }}" width="1920">
+  {{ end }}
+</section>
+
+{{/* ---- CONCERT HEADER ---- */}}
+<section class="section--tight" style="padding-top: var(--space-6);">
+  <div class="container stack">
+    <p class="label label--maroon">
+      {{ if $isPast }}From the Archive · {{ end }}{{ .Params.instrument }}
+    </p>
+    <h1 class="t-display" style="max-width: 18ch;">{{ .Title }}</h1>
+    <div style="display:flex; gap:var(--space-4); flex-wrap:wrap; align-items:center;">
+      <span class="chip">{{ .Date.Format "Monday, January 2, 2006" }}</span>
+      <span class="label">{{ .Site.Params.venueName }} · {{ .Site.Params.venueAddress }}</span>
+    </div>
+    {{ if not $isPast }}
+    <div style="margin-top: var(--space-2);">
+      <a class="btn btn--primary" href="{{ .Params.ticketUrl }}" target="_blank" rel="noopener">Purchase Tickets</a>
+    </div>
+    {{ end }}
+  </div>
+</section>
+
+{{/* ---- BODY + PROGRAM ---- */}}
+<section class="section" style="padding-top: var(--space-4);">
+  <div class="container">
+    <div class="grid" style="grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: var(--space-6); align-items: start;">
+      <div class="prose">
+        {{ .Content }}
+      </div>
+      <aside class="stack" style="--space-3: var(--space-4);">
+        {{ with .Params.accompanists }}
+        <div class="card">
+          <p class="label label--maroon" style="margin-bottom: var(--space-2);">With</p>
+          <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:var(--space-1);">
+            {{ range . }}<li class="t-body-lg" style="font-family: var(--font-display);">{{ . }}</li>{{ end }}
+          </ul>
+        </div>
+        {{ end }}
+        {{ with .Params.program }}
+        <div>
+          <p class="label label--maroon" style="margin-bottom: var(--space-3);">The Evening</p>
+          <div class="program">
+            {{ range . }}
+            <div class="program__row">
+              <span class="program__time">{{ .time }}</span>
+              <span class="program__desc">{{ .desc | markdownify }}</span>
+            </div>
+            {{ end }}
+          </div>
+        </div>
+        {{ end }}
+        <div class="card">
+          <p class="label label--maroon" style="margin-bottom: var(--space-2);">Logistics</p>
+          <p style="margin:0;"><strong>Doors</strong> {{ .Params.doors }}<br>
+          <strong>Begins</strong> {{ .Params.starts }}<br>
+          <strong>Where</strong> {{ .Site.Params.venueName }}, {{ .Site.Params.venueAddress }}</p>
+          {{ if not $isPast }}
+          <a class="btn btn--primary" href="{{ .Params.ticketUrl }}" target="_blank" rel="noopener" style="margin-top: var(--space-3);">Purchase Tickets</a>
+          {{ end }}
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+{{ partial "newsletter.html" . }}
+{{ end }}

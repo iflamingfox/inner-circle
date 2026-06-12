@@ -1,0 +1,62 @@
+baseURL = "https://innercircle.netlify.app/"
+defaultContentLanguage = "en"
+title = "Inner Circle"
+# Concerts are dated in the future — they MUST be built and shown.
+buildFuture = true
+
+[languages.en]
+  label = "English"
+  locale = "en_US"
+enableRobotsTXT = true
+
+# Soul & Stone design system — sane defaults
+[params]
+  tagline = "An intimate salon for ancient traditions in a contemporary space."
+  description = "Inner Circle — an intimate house concert series presenting Hindustani classical music in a contemporary home in Chevy Chase."
+  venueName = "Inner Circle"
+  venueAddress = "5800 Deal Place, Chevy Chase, MD 20815"
+  boxOffice = "https://www.tickettailor.com/events/ibeam"
+  # Newsletter (Buttondown). Set buttondownUser when the account exists.
+  buttondownUser = ""
+  email = "loganissian@enlumen.org"
+  [params.social]
+    instagram = ""
+    youtube = ""
+
+[markup]
+  [markup.goldmark.renderer]
+    unsafe = true
+  [markup.highlight]
+    noClasses = false
+
+# Image processing quality for the real house photos
+[imaging]
+  resampleFilter = "Lanczos"
+  [imaging.jpeg]
+    quality = 82
+  [imaging.exif]
+    disableDate = true
+    disableLatLong = true
+
+[taxonomies]
+  artist = "artists"
+
+[menus]
+  [[menus.main]]
+    name = "Concerts"
+    pageRef = "/concerts"
+    weight = 10
+  [[menus.main]]
+    name = "The House"
+    pageRef = "/the-house"
+    weight = 20
+  [[menus.main]]
+    name = "Archive"
+    pageRef = "/archive"
+    weight = 30
+
+[outputs]
+  home = ["HTML", "RSS"]
+
+[pagination]
+  pagerSize = 12

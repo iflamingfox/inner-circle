@@ -1,0 +1,30 @@
+{{ define "main" }}
+{{ $concerts := where site.RegularPages "Section" "concerts" }}
+{{ $past := slice }}
+{{ range $concerts }}
+  {{ $end := .Date }}{{ with .Params.endDate }}{{ $end = (time.AsTime .) }}{{ end }}
+  {{ if lt $end now }}{{ $past = $past | append . }}{{ end }}
+{{ end }}
+{{ $past = sort $past "Date" "desc" }}
+
+<section class="section">
+  <div class="container">
+    <header class="stack" style="margin-bottom: var(--space-6); max-width: 60ch;">
+      <p class="label label--maroon">Past Gatherings</p>
+      <h1 class="t-headline-lg">The <em class="t-accent">Archive</em></h1>
+      <p class="t-body-lg">{{ .Content | plainify }}</p>
+    </header>
+    {{ if $past }}
+    <div class="grid" style="grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: var(--space-5);">
+      {{ range $past }}{{ partial "concert-card.html" . }}{{ end }}
+    </div>
+    {{ else }}
+    <div class="card" style="text-align:center; padding: var(--space-6);">
+      <p class="t-headline-md" style="margin:0 0 var(--space-2);">The archive is still being written.</p>
+      <p style="margin:0 auto; max-width: 46ch;">Our first gatherings are yet to come. After each evening passes, it will find its place here. In the meantime, see what's <a href="{{ "/concerts/" | relURL }}">upcoming</a>.</p>
+    </div>
+    {{ end }}
+  </div>
+</section>
+{{ partial "newsletter.html" . }}
+{{ end }}

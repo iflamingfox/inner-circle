@@ -1,0 +1,16 @@
+{{/* Expects a concert Page as the context (.) */}}
+<a href="{{ .RelPermalink }}" class="card" style="display:flex; flex-direction:column; gap:var(--space-3); text-decoration:none; color:inherit;">
+  <div class="card__media">
+    {{ with .Params.image }}
+      {{ with resources.Get (printf "images/%s" .) }}
+        {{ $img := .Fill "640x800 Smart" }}
+        <img src="{{ $img.RelPermalink }}" alt="{{ $.Params.artist }}" loading="lazy" width="640" height="800">
+      {{ end }}
+    {{ end }}
+  </div>
+  <div class="stack" style="--space-3: var(--space-1);">
+    <span class="chip">{{ .Date.Format "Jan 2, 2006" }}</span>
+    <h3 class="t-title" style="margin:0;">{{ .Title }}</h3>
+    <p class="label">{{ .Params.artist }} · {{ .Params.instrument }}</p>
+  </div>
+</a>

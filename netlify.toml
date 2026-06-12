@@ -1,0 +1,21 @@
+# Netlify build configuration for Inner Circle
+[build]
+  publish = "public"
+  command = "hugo --gc --minify"
+
+[build.environment]
+  HUGO_VERSION = "0.163.1"
+  HUGO_ENV = "production"
+  TZ = "America/New_York"
+
+# Long-cache fingerprinted assets; HTML stays fresh.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

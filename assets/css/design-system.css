@@ -1,0 +1,258 @@
+/* ============================================================================
+   INNER CIRCLE — "SOUL & STONE" DESIGN SYSTEM
+   ----------------------------------------------------------------------------
+   This file is the SINGLE SOURCE OF TRUTH for the site's visual language.
+   Every page, component, and future update MUST use these tokens. Do not
+   hard-code colors, fonts, or spacing anywhere else — reference the variables.
+
+   Direction: LIGHT & AIRY. Bone-white gallery canvas, architectural charcoal
+   structure, madder-maroon soul, turmeric warmth. Sharp corners, thin rules,
+   generous breathing room. Honest to the real house: bright, modern, warm.
+   ============================================================================ */
+
+:root {
+  /* --- COLOR ------------------------------------------------------------- */
+  --bone:            #F9F8F4;   /* primary canvas — warm, linen-like white   */
+  --bone-dim:        #F0EDED;   /* subtle alternating section background      */
+  --bone-container:  #FFFFFF;   /* cards / raised surfaces                    */
+  --charcoal:        #1A1A1A;   /* type + structural lines ("Stone")          */
+  --charcoal-soft:   #584141;   /* secondary text, warm grey-brown           */
+  --maroon:          #800020;   /* primary brand / actions ("Soul")          */
+  --maroon-deep:     #570013;   /* hover / pressed maroon                     */
+  --maroon-bright:   #AF2B3E;   /* accents on dark grounds                    */
+  --turmeric:        #EAB308;   /* festive accent, chips, indicators          */
+  --turmeric-deep:   #785A00;   /* turmeric text on light                     */
+  --outline:         rgba(26,26,26,0.14);  /* thin architectural rules        */
+  --outline-strong:  #1A1A1A;   /* 1px container borders                      */
+  --on-maroon:       #FFFFFF;
+  --on-charcoal:     #F3F0EF;
+
+  /* --- TYPOGRAPHY -------------------------------------------------------- */
+  --font-display: "EB Garamond", Georgia, "Times New Roman", serif;
+  --font-body:    "Hanken Grotesk", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+  --fs-display:     clamp(2.75rem, 6vw, 4.5rem);   /* 44 → 72px               */
+  --fs-headline-lg: clamp(2rem, 4vw, 3rem);        /* 32 → 48px               */
+  --fs-headline-md: clamp(1.5rem, 2.5vw, 2rem);    /* 24 → 32px               */
+  --fs-title:       1.375rem;                       /* 22px                    */
+  --fs-body-lg:     1.125rem;                       /* 18px                    */
+  --fs-body:        1rem;                            /* 16px                    */
+  --fs-label:       0.75rem;                         /* 12px caps labels        */
+
+  --lh-tight:   1.1;
+  --lh-snug:    1.25;
+  --lh-normal:  1.6;
+  --tracking-display: -0.02em;
+  --tracking-label:    0.16em;
+
+  /* --- SPACING (8px base) ------------------------------------------------ */
+  --space-1: 0.5rem;   /*  8 */
+  --space-2: 1rem;     /* 16 */
+  --space-3: 1.5rem;   /* 24 */
+  --space-4: 2rem;     /* 32 */
+  --space-5: 3rem;     /* 48 */
+  --space-6: 4rem;     /* 64 */
+  --space-7: 6rem;     /* 96 */
+  --space-8: 7.5rem;   /* 120 — section gap */
+
+  --container-max:   1280px;
+  --measure:         68ch;    /* readable line length for long copy           */
+  --margin-desktop:  80px;
+  --margin-mobile:   24px;
+
+  /* --- SHAPE & DEPTH ----------------------------------------------------- */
+  --radius:        0;          /* SHARP corners everywhere (structural)       */
+  --radius-round:  50%;        /* only for organic elements (avatars)         */
+  --border:        1px solid var(--outline-strong);
+  --rule:          1px solid var(--outline);
+  --blur:          10px;       /* overlay/menu backdrop blur                  */
+  --transition:    220ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ============================================================================
+   RESET & BASE
+   ============================================================================ */
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bone);
+  color: var(--charcoal);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  letter-spacing: 0.01em;
+  font-weight: 400;
+  /* Subtle linen grain for tactile warmth (per design system) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--maroon); text-decoration: none; transition: color var(--transition); }
+a:hover { color: var(--maroon-deep); }
+
+/* ============================================================================
+   TYPOGRAPHY
+   ============================================================================ */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  line-height: var(--lh-snug);
+  margin: 0 0 var(--space-3);
+  color: var(--charcoal);
+}
+.t-display     { font-size: var(--fs-display); line-height: var(--lh-tight); letter-spacing: var(--tracking-display); font-weight: 500; }
+.t-headline-lg { font-size: var(--fs-headline-lg); }
+.t-headline-md { font-size: var(--fs-headline-md); font-weight: 400; }
+.t-title       { font-family: var(--font-display); font-size: var(--fs-title); font-weight: 500; }
+.t-body-lg     { font-size: var(--fs-body-lg); line-height: var(--lh-normal); }
+.t-accent      { font-style: italic; color: var(--maroon); }      /* "Dusk & Clay" treatment */
+
+.label {
+  font-family: var(--font-body);
+  font-size: var(--fs-label);
+  font-weight: 600;
+  letter-spacing: var(--tracking-label);
+  text-transform: uppercase;
+  color: var(--charcoal-soft);
+}
+.label--maroon { color: var(--maroon); }
+
+p { margin: 0 0 var(--space-3); max-width: var(--measure); }
+.prose p { font-size: var(--fs-body-lg); }
+.prose h3 { margin-top: var(--space-5); }
+
+/* ============================================================================
+   LAYOUT PRIMITIVES
+   ============================================================================ */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-inline: auto;
+  padding-inline: var(--margin-mobile);
+}
+@media (min-width: 768px) {
+  .container { padding-inline: var(--margin-desktop); }
+}
+.section { padding-block: var(--space-7); }
+.section--tight { padding-block: var(--space-5); }
+.section--bone-dim { background: var(--bone-dim); }
+.section--charcoal { background: var(--charcoal); color: var(--on-charcoal); }
+.section--maroon { background: var(--maroon); color: var(--on-maroon); }
+.section--charcoal h1, .section--charcoal h2, .section--charcoal h3,
+.section--maroon h1, .section--maroon h2, .section--maroon h3 { color: inherit; }
+
+.stack > * + * { margin-top: var(--space-3); }
+.grid { display: grid; gap: var(--space-4); }
+.divider { border: none; border-top: var(--rule); margin-block: var(--space-5); }
+
+/* ============================================================================
+   COMPONENTS
+   ============================================================================ */
+
+/* --- Buttons --- */
+.btn {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  font-family: var(--font-body); font-size: var(--fs-label);
+  font-weight: 600; letter-spacing: var(--tracking-label); text-transform: uppercase;
+  padding: 1rem 1.75rem; border: var(--border); border-radius: var(--radius);
+  background: transparent; color: var(--charcoal); cursor: pointer;
+  transition: background var(--transition), color var(--transition), border-color var(--transition);
+}
+.btn:hover { background: var(--charcoal); color: var(--bone); }
+.btn--primary { background: var(--maroon); border-color: var(--maroon); color: var(--on-maroon); }
+.btn--primary:hover { background: var(--maroon-deep); border-color: var(--maroon-deep); color: var(--on-maroon); }
+.btn--on-dark { border-color: rgba(255,255,255,0.5); color: var(--on-charcoal); }
+.btn--on-dark:hover { background: var(--bone); color: var(--charcoal); border-color: var(--bone); }
+
+/* --- Chip / tag (turmeric date & genre markers) --- */
+.chip {
+  display: inline-block; background: var(--turmeric); color: var(--charcoal);
+  font-family: var(--font-body); font-size: var(--fs-label); font-weight: 600;
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  padding: 0.4rem 0.7rem; border-radius: var(--radius);
+}
+
+/* --- Card --- */
+.card {
+  background: var(--bone-container); border: var(--border); border-radius: var(--radius);
+  padding: var(--space-4); transition: transform var(--transition);
+}
+.card__media { aspect-ratio: 4 / 5; overflow: hidden; background: var(--bone-dim); }
+.card__media img { width: 100%; height: 100%; object-fit: cover; transition: transform 500ms ease; }
+a.card:hover .card__media img, .card a:hover .card__media img { transform: scale(1.04); }
+
+/* --- Avatar (organic circle exception) --- */
+.avatar { border-radius: var(--radius-round); overflow: hidden; aspect-ratio: 1; }
+.avatar img { width: 100%; height: 100%; object-fit: cover; }
+
+/* --- Inputs (minimalist bottom-border) --- */
+.field { display: flex; flex-direction: column; gap: var(--space-1); }
+.field label { /* uses .label utility */ }
+.input {
+  font-family: var(--font-body); font-size: var(--fs-body);
+  background: transparent; border: none; border-bottom: 1px solid currentColor;
+  border-radius: 0; padding: 0.6rem 0; color: inherit;
+}
+.input:focus { outline: none; border-bottom-color: var(--turmeric); }
+
+/* --- The Program (specialty: evening schedule / ragas / logistics) --- */
+.program { display: grid; gap: var(--space-4); }
+.program__row {
+  display: grid; grid-template-columns: 7rem 1fr; gap: var(--space-3);
+  padding-bottom: var(--space-3); border-bottom: var(--rule);
+}
+.program__time { font-family: var(--font-display); font-size: var(--fs-title); color: var(--maroon); }
+.program__desc { font-family: var(--font-body); }
+.program__desc strong { font-weight: 600; }
+@media (max-width: 600px) { .program__row { grid-template-columns: 1fr; gap: var(--space-1); } }
+
+/* --- Numbered editorial list (Upcoming Gatherings) --- */
+.gathering {
+  display: grid; grid-template-columns: auto 1fr auto; gap: var(--space-4);
+  align-items: start; padding-block: var(--space-4); border-top: var(--rule);
+}
+.gathering__num { font-family: var(--font-display); font-size: var(--fs-headline-lg); color: var(--outline-strong); opacity: 0.35; }
+.gathering__media { width: 120px; aspect-ratio: 4/5; object-fit: cover; }
+@media (max-width: 700px) {
+  .gathering { grid-template-columns: auto 1fr; }
+  .gathering__media { display: none; }
+}
+
+/* --- Header / footer --- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--space-2) var(--margin-mobile);
+  background: color-mix(in srgb, var(--bone) 88%, transparent);
+  backdrop-filter: blur(var(--blur)); -webkit-backdrop-filter: blur(var(--blur));
+  border-bottom: var(--rule);
+}
+@media (min-width: 768px) { .site-header { padding-inline: var(--margin-desktop); } }
+.brand { font-family: var(--font-display); font-size: var(--fs-title); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--charcoal); }
+.nav { display: flex; gap: var(--space-4); align-items: center; }
+.nav a { font-family: var(--font-body); font-size: var(--fs-label); font-weight: 600; letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--charcoal-soft); }
+.nav a:hover { color: var(--maroon); }
+.nav__toggle { display: none; }
+@media (max-width: 720px) {
+  .nav { gap: var(--space-2); }
+  .nav a:not(.btn) { display: none; }
+}
+
+.site-footer { background: var(--maroon); color: var(--on-maroon); padding-block: var(--space-6); }
+.site-footer a { color: var(--on-maroon); opacity: 0.85; }
+.site-footer a:hover { opacity: 1; color: var(--turmeric); }
+
+/* --- Hero --- */
+.hero { position: relative; }
+.hero__media { width: 100%; height: clamp(420px, 70vh, 760px); object-fit: cover; }
+.hero__overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(26,26,26,0.30) 0%, rgba(26,26,26,0.45) 45%, rgba(26,26,26,0.82) 100%); }
+.hero__content { position: absolute; inset: auto 0 0 0; padding: var(--space-6) 0; color: var(--on-charcoal); text-shadow: 0 1px 24px rgba(0,0,0,0.35); }
+.hero__content .container { max-width: var(--container-max); }
+.hero h1 { color: #fff; }
+
+/* Accessibility */
+:focus-visible { outline: 2px solid var(--turmeric); outline-offset: 3px; }
+.visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto; } }
