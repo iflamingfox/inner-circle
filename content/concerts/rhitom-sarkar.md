@@ -8,7 +8,7 @@ instrument: "Hindustani Slide Guitar"
 accompanists:
   - "Debu Nayak — Tabla"
 summary: "A pin-drop evening of the Hindustani slide guitar — gliding, vocal-like tones from a disciple of slide-guitar legend Pt. Debashish Bhattacharya."
-image: "events/rhitom-sarkar/image1.jpg"
+image: "events/rhitom-sarkar/hero.jpg"
 listingImage: "events/rhitom-sarkar/381574.jpeg"
 ticketUrl: "https://www.tickettailor.com/events/ibeam/2257939"
 doors: "6:00 PM"
