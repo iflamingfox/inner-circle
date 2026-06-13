@@ -28,6 +28,7 @@ lede: "The sarod has no frets — only a gleaming steel fingerboard and the fing
 quote: "No frets, no stops — only the glide. Of all the instruments, the sarod speaks closest to the human voice."
 quoteBg: "maroon"
 quoteWatermark: "Sarod"
+lineageLabel: "Senia–Shahjahanpur"
 
 artistFullName: "Swarnendu Mandal"
 artistImage: "events/swarnendu-mandal/portrait.jpg"
@@ -66,7 +67,6 @@ videos:
     title: "Falling in Love with the Sarod"
   - id: "lDw2iVPE-0I"
     title: "Mother & Water — Sarod & Tabla"
-mediaBg: "charcoal"
 
 essayKicker: "The Instrument"
 essayTitle: "On the Sarod"

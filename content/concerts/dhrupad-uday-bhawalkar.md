@@ -28,6 +28,8 @@ lede: "For one evening, the oldest surviving form of Hindustani classical music 
 
 quote: "When immersed in the note and the raga, the self disappears and the music takes on its own existence — the principle of *darshan* in Indian philosophy."
 quoteBy: "Pandit Uday Bhawalkar"
+quoteWatermark: "Dhrupad"
+lineageLabel: "The Dagarvani"
 
 artistFullName: "Pandit Uday Bhawalkar"
 artistImage: "events/dhrupad-uday-bhawalkar/portrait.jpg"

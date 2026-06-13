@@ -25,6 +25,8 @@ heroKicker: "Tabla · Farukhabad Gharana"
 lede: "She was a child when the world first called her the *Princess of Tabla*. Tonight, one of the very few women to command the solo tabla stage brings the Farukhabad gharana to a living room in Chevy Chase."
 
 quote: "The tabla in her hands is not accompaniment — it is the full voice of the evening."
+quoteWatermark: "Tabla"
+lineageLabel: "Farukhabad Gharana"
 
 artistImage: "events/rimpa-siva/portrait.jpg"
 artistBio: |
@@ -68,7 +70,6 @@ essayBody: |
   stroke is audible — the whisper of the fingertips as clearly as the thunder of the
   full hand.
 
-mediaBg: "maroon"
 videos:
   - { id: "jJ2WseDHEPI", title: "Tabla Solo · Farukhabad Gharana", source: "YouTube" }
   - { id: "-ffgCM4SEfU", title: "Tabla Solo · Darbar Festival", source: "YouTube" }
