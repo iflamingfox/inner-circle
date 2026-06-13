@@ -71,8 +71,10 @@
 
 {{/* ============================ PULL-QUOTE ============================ */}}
 {{ with .Params.quote }}
-<section class="section--charcoal" style="padding-block: var(--space-7);">
-  <div class="container" style="text-align:center;">
+{{ $qbg := $.Params.quoteBg | default "charcoal" }}
+<section class="section--{{ $qbg }} pullquote-section" style="padding-block: var(--space-7);">
+  {{ with $.Params.quoteWatermark }}<span class="quote-watermark" aria-hidden="true">{{ . }}</span>{{ end }}
+  <div class="container" style="text-align:center; position:relative; z-index:1;">
     <blockquote class="pullquote">“{{ . | markdownify | safeHTML }}”</blockquote>
     {{ with $.Params.quoteBy }}<p class="label" style="color: var(--turmeric); margin-top: var(--space-3);">{{ . }}</p>{{ end }}
   </div>
@@ -100,7 +102,7 @@
         </div>
         {{ end }}
         {{ with .Params.artistLink }}
-        <p style="margin-top: var(--space-4);"><a class="label label--maroon" href="{{ . }}" target="_blank" rel="noopener" style="border-bottom:1px solid var(--maroon); padding-bottom:2px;">More about Uday Bhawalkar →</a></p>
+        <p style="margin-top: var(--space-4);"><a class="label label--maroon" href="{{ . }}" target="_blank" rel="noopener" style="border-bottom:1px solid var(--maroon); padding-bottom:2px;">More about {{ $.Params.artistFullName | default $.Params.artist }} →</a></p>
         {{ end }}
       </div>
     </div>
@@ -109,7 +111,8 @@
 
 {{/* ============================ MEDIA / WATCH ============================ */}}
 {{ with .Params.videos }}
-<section class="section section--maroon">
+{{ $mbg := $.Params.mediaBg | default "charcoal" }}
+<section class="section section--{{ $mbg }}">
   <div class="container">
     <div class="section-head" style="border-color: rgba(255,255,255,0.18);">
       <h2 class="t-headline-lg" style="color:#fff;">In Performance</h2>

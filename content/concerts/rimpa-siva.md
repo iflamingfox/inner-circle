@@ -68,6 +68,7 @@ essayBody: |
   stroke is audible — the whisper of the fingertips as clearly as the thunder of the
   full hand.
 
+mediaBg: "maroon"
 videos:
   - { id: "jJ2WseDHEPI", title: "Tabla Solo · Farukhabad Gharana", source: "YouTube" }
   - { id: "-ffgCM4SEfU", title: "Tabla Solo · Darbar Festival", source: "YouTube" }
